@@ -9,11 +9,11 @@ on:
 
 jobs:  
   my_testing:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
    
-   steps:
-     - name: Print Hello
-     run : echo "Hello from testing"
+    steps:
+      - name: Print Hello
+      run : echo "Hello from testing"
 
   my_deploy:
     runs-on: ubuntu-latest
