@@ -1,4 +1,7 @@
 name: My-GithubActions
+env:
+  APPLICATION_NAME        : "MyFlask"
+  DEPLOY_PACKAGE_NAME     : "flask_deploy_version${{  github.sha  }}"
 
 on:
   push:
@@ -9,13 +12,23 @@ jobs:
   my_testing:
     runs-on: ubuntu-latest
     steps:
-    - name: Print Hello
+    - name: Print Hello message testing
       run : echo "Hello from testing"
+    
+    - name: Execute few commands
+      run : |
+        echo "Hello mes1"
+        echo "Hello mes 2"
+        echo "Application name is ${{ env.APPLICATION_NAME }}"
+      
       
   my_deploy:
     runs-on: ubuntu-latest
     needs: [my_testing]
     steps:
-    - name: Print Hello
+    - name: Print Hello message deploy
       run : echo "Hello from deploy"
+      
+    - name: Printing deployment package
+      run : echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
 
